@@ -2,16 +2,20 @@ package elastic.services.imp;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.stereotype.Service;
 
 import elastic.model.Article;
 import elastic.model.Author;
+import elastic.repository.ArticleRepository;
 import elastic.services.ArticleService;
 @Service
 public class ArticleImpl implements ArticleService {
 
-	private ElasticsearchOperations elasticsearchOperations;
+	@Autowired
+	ArticleRepository articleRepository;
+	
 	@Override
 	public Iterable<Article> fullArticle() {
 		// TODO Auto-generated method stub
@@ -39,9 +43,7 @@ public class ArticleImpl implements ArticleService {
 	@Override
 	public void saveUser(Article article) {
 		// TODO Auto-generated method stub
-		elasticsearchOperations.indexOps(Article.class).create();
-	
-		
+	    articleRepository.save(article);
 	}
 
 }

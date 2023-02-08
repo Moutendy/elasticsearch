@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import elastic.model.Article;
 import elastic.model.UserModel;
 import elastic.repository.UserRepository;
+import elastic.services.ArticleService;
 import elastic.services.UserSearch;
 
 @RestController
@@ -20,10 +22,13 @@ public class UserController {
 	@Autowired
 	private UserSearch userSearch;
 	
-	@GetMapping("/getvaleur")
-	static void gevaleur()
+	@Autowired
+	private ArticleService servicearticle;
+	
+	@PostMapping("/getvaleur")
+	public void gevaleur(@RequestBody final Article article)
 	{
-		System.out.println("bonjour");
+		servicearticle.saveUser(article);
 	}
 	@PostMapping("/post")
 	public void createProductIndexBulk(@RequestBody final List<UserModel> products) {
@@ -39,5 +44,7 @@ public class UserController {
 	    public Iterable<UserModel> findAllEmployees() {
 	        return userSearch.fullUsers();
 	    }
+	    
+	
 
 }
