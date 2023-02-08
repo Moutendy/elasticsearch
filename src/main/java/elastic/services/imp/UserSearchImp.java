@@ -33,4 +33,21 @@ public class UserSearchImp implements UserSearch {
 		userRepository.saveAll(users);
 	}
 
+	@Override
+	public void delete(String id) {
+		// TODO Auto-generated method stub
+		userRepository.deleteById(id);
+	}
+
+	@Override
+	public void updateUser(UserModel user) {
+		// TODO Auto-generated method stub
+		
+		if(userRepository.existsById(user.getId()))
+		{
+			userRepository.save(user);
+		}
+		
+	}
+
 }

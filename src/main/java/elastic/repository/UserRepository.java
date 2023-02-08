@@ -1,7 +1,9 @@
 package elastic.repository;
 
 
+
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
+
 import org.springframework.stereotype.Repository;
 
 import elastic.model.UserModel;
@@ -11,7 +13,7 @@ import elastic.model.UserModel;
 public interface UserRepository extends  ElasticsearchRepository<UserModel, String>{
 
 	
-	
+
 }
 
 

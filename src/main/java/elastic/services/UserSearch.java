@@ -12,4 +12,8 @@ public interface UserSearch {
 	
 	void addAllUsers(List<UserModel>users);
 	
+	void delete(String id);
+	
+	void updateUser(UserModel user);
+	
 }

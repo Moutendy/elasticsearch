@@ -2,8 +2,14 @@ package elastic.config;
 
 import org.apache.http.HttpHost;
 import org.elasticsearch.client.RestClient;
+
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.elasticsearch.client.ClientConfiguration;
+import org.springframework.data.elasticsearch.client.erhlc.AbstractElasticsearchConfiguration;
+import org.springframework.data.elasticsearch.client.erhlc.RestClients;
+import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.json.jackson.JacksonJsonpMapper;
@@ -11,7 +17,9 @@ import co.elastic.clients.transport.ElasticsearchTransport;
 import co.elastic.clients.transport.rest_client.RestClientTransport;
 
 @Configuration
-public class elasticsearchconfig {
+@EnableElasticsearchRepositories(basePackages = "elastic.repository")
+@ComponentScan(basePackages = { "elastic.services" })
+public class elasticsearchconfig{
 
 
 	    @Bean
@@ -32,5 +40,10 @@ public class elasticsearchconfig {
 	        ElasticsearchClient client = new ElasticsearchClient(getElasticsearchTransport());
 	        return client;
 	    }
+
+	
+
+		
+	
 
 }
