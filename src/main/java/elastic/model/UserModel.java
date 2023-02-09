@@ -29,8 +29,8 @@ public class UserModel {
 	
 	 private String profil;
 	
-	@Field(type = FieldType.Integer, name = "role_id")
-	 private Integer role_id;
+	  @Field(type = FieldType.Nested, includeInParent = true,name = "roles")
+	 private Role roles;
 	
 	
 

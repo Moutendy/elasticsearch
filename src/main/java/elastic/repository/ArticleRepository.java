@@ -1,13 +1,16 @@
 package elastic.repository;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import java.util.List;
+
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
+
 import org.springframework.stereotype.Repository;
 
 import elastic.model.Article;
 @Repository
 public interface ArticleRepository extends ElasticsearchRepository<Article, String>{
 	
-	Page<Article> findByAuthorsName(String name, Pageable pageable);
+	List<Article> findByAuthorsName(String name);
+	
+	List<Article> findByTitle(String name);
 }
